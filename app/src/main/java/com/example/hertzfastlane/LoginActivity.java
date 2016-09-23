@@ -87,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this,
                                     "Error: could not fetch user.",
                                     Toast.LENGTH_SHORT).show();
+                            exist = true;
                         }
                         finish();
                         // [END_EXCLUDE]
