@@ -26,6 +26,10 @@ dependencies {
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.google.firebase:firebase-database:9.6.0'
     compile 'me.dm7.barcodescanner:zxing:1.8.4'
+    compile 'com.amazonaws:aws-android-sdk-core:2.2.+'
+    compile 'com.amazonaws:aws-android-sdk-s3:2.2.+'
+    compile 'com.amazonaws:aws-android-sdk-ddb:2.2.+'
+    compile 'com.amazonaws:aws-android-sdk-ddb-mapper:2.2.+'
 }
 
 apply plugin: 'com.google.gms.google-services'

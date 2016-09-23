@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -16,7 +20,15 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
  * Created by Steven J on 9/22/2016.
  */
 public class QrScanner extends Activity implements ZXingScannerView.ResultHandler {
+    private String qrString;
+    private String resultString;
     private ZXingScannerView mScannerView;
+    //DynamoDB Mapper objects - JSON data
+    private DynamoDBMapper mapper;
+    private DynamoDBMapper mapperMembers;
+    Car car;
+    Member member;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +53,59 @@ public class QrScanner extends Activity implements ZXingScannerView.ResultHandle
         //Do anything with result here :D
         Log.w("handleResult", result.getText());
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        qrString = result.getText();
+
+        //Credentials for identity pools for Table Cars and members - AWS
+        // Initialize the Amazon Cognito credentials provider for members Table
+        CognitoCachingCredentialsProvider credentialsProviderMembers = new CognitoCachingCredentialsProvider(
+                getApplicationContext(),
+                "us-east-1:d203cc02-4b6f-475d-84b1-93687e673058", // Identity Pool ID
+                Regions.US_EAST_1 // Region
+        );
+        AmazonDynamoDBClient ddbClientMembers = new AmazonDynamoDBClient(credentialsProviderMembers);
+        mapperMembers = new DynamoDBMapper(ddbClientMembers);
+
+
+        // Initialize the Amazon Cognito credentials provider for Cars table
+        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
+                getApplicationContext(),
+                "us-east-1:d471f9f6-bda2-4a1f-85c5-4cb99127c6d1", // Identity Pool ID
+                Regions.US_EAST_1 // Region
+        );
+        //DB client and JSON mapper-Cars Table
+        AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
+        mapper = new DynamoDBMapper(ddbClient);
+
+        Runnable runnable = new Runnable(){
+
+            @Override
+            public void run(){
+                car = mapper.load(Car.class,qrString);
+                if(car != null){
+                    member = mapperMembers.load(Member.class, car.getReservationId());
+
+                    if(member == null){
+                        resultString = "No reservations found!";
+                    }else{
+                        resultString = member.getFirst_name() + " " + member.getLast_name() +
+                                " checked in successfully with an " + car.getVin() + " " +
+                                car.getMake() + " " +
+                                car.getModel();
+                        car.setStatus("true");
+                        mapper.save(car);
+                    }
+                }
+            }
+
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
+
         builder.setTitle("Scan result");
-        builder.setMessage(result.getText());
+        builder.setMessage(resultString);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-
 
         //mScannerView.resumeCameraPreview(this);  //  use to Resume scanning
         mScannerView.stopCamera();
