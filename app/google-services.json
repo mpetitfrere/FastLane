@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "787446517914",
+    "firebase_url": "https://fastlaneapp-f212a.firebaseio.com",
+    "project_id": "fastlaneapp-f212a",
+    "storage_bucket": "fastlaneapp-f212a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787446517914:android:331ace8aa136ac1d",
+        "android_client_info": {
+          "package_name": "com.example.hertzfastlane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787446517914-t9nk3500i90l43lch9vhdcmkk6h65b9v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRbZ83du5VtvHtn4VQpRDV1m3cIHF8mPo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
