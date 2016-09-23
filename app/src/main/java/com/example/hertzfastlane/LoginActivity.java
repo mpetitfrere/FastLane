@@ -2,7 +2,6 @@ package com.example.hertzfastlane;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -17,14 +16,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import static com.android.volley.toolbox.Volley.newRequestQueue;
-
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private String username;
@@ -32,7 +23,6 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private boolean exist;
 
-    String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
