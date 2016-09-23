@@ -2,6 +2,7 @@ package com.example.hertzfastlane;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -16,12 +17,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import static com.android.volley.toolbox.Volley.newRequestQueue;
+
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private String username;
     private String password;
     private DatabaseReference mDatabase;
     private boolean exist;
+
+    String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
         final EditText etUsername = (EditText) findViewById(R.id.etUserName);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
         final Button bLogin = (Button) findViewById(R.id.bLogin);
-        final Button bScanner = (Button) findViewById(R.id.bScanner);
         final TextView registerLink = (TextView) findViewById(R.id.tvRegister);
 
 
@@ -60,13 +70,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        bScanner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent registerIntent = new Intent(LoginActivity.this, QrScanner.class);
-                LoginActivity.this.startActivity(registerIntent);
-            }
-        });
 
     }
 
