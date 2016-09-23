@@ -84,23 +84,38 @@ public class QrScanner extends Activity implements ZXingScannerView.ResultHandle
                 car = mapper.load(Car.class,qrString);
                 if(car != null){
                     member = mapperMembers.load(Member.class, car.getReservationId());
-
                     if(member == null){
-                        resultString = "No reservations found!";
+                        resultString = "Member does not exist";
                     }else{
-                        resultString = member.getFirst_name() + " " + member.getLast_name() +
-                                " checked in successfully with an " + car.getVin() + " " +
-                                car.getMake() + " " +
-                                car.getModel();
-                        car.setStatus("true");
-                        mapper.save(car);
+                        if(car.getStatus().equals("true")){
+                            resultString = car.getVin() + " " + car.getMake() + " " +
+                                    car.getModel() + " is currently already checked out!";
+                        }else if(!car.getStatus().equals("true") &&
+                            car.getVin().equals(member.getReservationVin())){
+                            resultString = member.getFirst_name() + " " + member.getLast_name() +
+                                    " checked in successfully with an " + car.getVin() + " " +
+                                    car.getMake() + " " +
+                                    car.getModel();
+                            car.setStatus("true");
+                            mapper.save(car);
+                        }else{
+                            resultString = "This car does not match your reservation!";
+                        }
                     }
+                }else{
+                    resultString = "Car does not exist";
                 }
             }
 
         };
         Thread thread = new Thread(runnable);
         thread.start();
+
+        try{
+            thread.join();
+        }catch(Exception e){
+            return;
+        }
 
         builder.setTitle("Scan result");
         builder.setMessage(resultString);
