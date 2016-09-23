@@ -7,6 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+
 public class UserActivity extends AppCompatActivity {
 
     @Override
@@ -20,10 +25,10 @@ public class UserActivity extends AppCompatActivity {
         final Button bMap = (Button) findViewById(R.id.bMap);
         final Button bHelp = (Button) findViewById(R.id.bHelp);
 
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
+        //Intent intent = getIntent();
+        //String name = intent.getStringExtra("name");
 
-        etName.setText(name);
+        //etName.setText(name);
 
         bScanner.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,7 +37,6 @@ public class UserActivity extends AppCompatActivity {
                 UserActivity.this.startActivity(registerIntent);
             }
         });
-
 
 
     }

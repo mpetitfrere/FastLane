@@ -13,15 +13,15 @@ import android.widget.Toast;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String TAG = "LoginActivity";
-    private String username;
-    private String password;
+
+    String TAG = "LoginActivity";
+    String username;
+    String password;
+    boolean exist;
     private DatabaseReference mDatabase;
-    private boolean exist;
 
 
     @Override
@@ -29,8 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        final EditText etUsername = (EditText) findViewById(R.id.etUserName);
+        final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
         final Button bLogin = (Button) findViewById(R.id.bLogin);
         final TextView registerLink = (TextView) findViewById(R.id.tvRegister);
@@ -39,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
         registerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 LoginActivity.this.startActivity(registerIntent);
             }
@@ -50,48 +48,17 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 username = etUsername.getText().toString();
                 password = etPassword.getText().toString();
-                firebase();
-                if(exist)
-                {
-                    Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-                    LoginActivity.this.startActivity(registerIntent);
-                }
 
+//firebase();
+//if(username.toString() == "john")
+//{
+                Intent userActivityIntent = new Intent(LoginActivity.this, UserActivity.class);
+                LoginActivity.this.startActivity(userActivityIntent);
+//}
             }
         });
 
 
     }
 
-    private void firebase()
-    {
-        mDatabase.child("Users").child(username).addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // Get user value
-                        User user = dataSnapshot.getValue(User.class);
-
-                        // [START_EXCLUDE]
-                        if (user.getName() == username)
-                        {
-                            // User is null, error out
-                            Log.e(TAG, "User " + username + " is unexpectedly null");
-                            Toast.makeText(LoginActivity.this,
-                                    "Error: could not fetch user.",
-                                    Toast.LENGTH_SHORT).show();
-                            exist = true;
-                        }
-                        finish();
-                        // [END_EXCLUDE]
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.w(TAG, "getUser:onCancelled", databaseError.toException());
-                        // [START_EXCLUDE]
-                        // [END_EXCLUDE]
-                    }
-                });
-    }
 }

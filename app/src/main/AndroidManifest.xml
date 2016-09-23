@@ -23,5 +23,5 @@
         <activity android:name=".UserActivity"></activity>
         <activity android:name=".QrScanner"/>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
