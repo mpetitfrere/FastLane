@@ -26,7 +26,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/logo"
-                android:src="@drawable/logo_checkout"
+                android:src="@drawable/logo_checkout_updated"
                 android:scaleType="fitCenter" />
         </LinearLayout>
 

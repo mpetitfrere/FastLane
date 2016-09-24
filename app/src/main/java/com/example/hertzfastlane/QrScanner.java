@@ -110,6 +110,11 @@ public class QrScanner extends Activity implements ZXingScannerView.ResultHandle
         };
         Thread thread = new Thread(runnable);
         thread.start();
+        try{
+            thread.join();
+        }catch(Exception e){
+            return;
+        }
 
         try{
             thread.join();
@@ -118,7 +123,10 @@ public class QrScanner extends Activity implements ZXingScannerView.ResultHandle
         }
 
         builder.setTitle("Scan result");
+        if(resultString != null)
         builder.setMessage(resultString);
+        else
+            builder.setMessage("Something is fucked");
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
 
@@ -126,6 +134,7 @@ public class QrScanner extends Activity implements ZXingScannerView.ResultHandle
         mScannerView.stopCamera();
         setContentView(R.layout.qr_code);
         mScannerView.resumeCameraPreview(this);  //  use to Resume scanning
+
 
     }
 }

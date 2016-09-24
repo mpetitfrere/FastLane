@@ -31,7 +31,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView2"
-                    android:src="@drawable/logo_checkout_yellow"
+                    android:src="@drawable/logo_checkout_updated"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:layout_margin="20dp" />
@@ -64,7 +64,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:text="Scan Vehicle"
-                android:id="@+id/bScanVehicle"
+                android:id="@+id/bScanner"
                 android:background="#313842"
                 android:textColor="#ffffff"
                 android:layout_marginTop="20dp"

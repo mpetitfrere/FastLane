@@ -7,11 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.amazonaws.auth.CognitoCachingCredentialsProvider;
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
-
 public class UserActivity extends AppCompatActivity {
 
     @Override
@@ -21,7 +16,7 @@ public class UserActivity extends AppCompatActivity {
 
         final EditText etName = (EditText) findViewById(R.id.etName);
         final Button bMyReservation = (Button) findViewById(R.id.bMyReservation);
-        final Button bScanner = (Button) findViewById(R.id.bScanVehicle);
+        final Button bScanner = (Button) findViewById(R.id.bScanner);
         final Button bMap = (Button) findViewById(R.id.bMap);
         final Button bHelp = (Button) findViewById(R.id.bHelp);
 
