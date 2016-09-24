@@ -39,11 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
                 final String password = etPassword.getText().toString();
                 final int age = Integer.parseInt(etAge.getText().toString());
 
-                System.out.println("Reg Act: " + name);
-                System.out.println("REG Act: " + username);
-                System.out.println("Reg Act: " + password);
-                System.out.println("Reg Act: " + age);
-
                 Response.Listener<String> responseListener = new Response.Listener<String>(){
                     @Override
                     public void onResponse(String response) {
@@ -71,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 };
 
-                RegisterRequest registerRequest = new RegisterRequest(name, username, age, password, responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(name, username, password, age, responseListener);
                 RequestQueue queue = newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
 
