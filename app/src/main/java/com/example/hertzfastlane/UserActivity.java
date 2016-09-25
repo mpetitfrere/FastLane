@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class UserActivity extends AppCompatActivity {
-
+    public static Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,4 +56,11 @@ public class UserActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void dialogBox (View view) {
+
+
+
+    }
+
 }
