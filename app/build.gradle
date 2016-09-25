@@ -4,17 +4,12 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
-<<<<<<< HEAD
+
     dexOptions {
         maxProcessCount 2
         javaMaxHeapSize "2g"
     }
-=======
-//    dexOptions {
-//        maxProcessCount 2
-//        javaMaxHeapSize "2g"
-//    }
->>>>>>> origin/master
+
     defaultConfig {
         applicationId "com.example.hertzfastlane"
         minSdkVersion 15

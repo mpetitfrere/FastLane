@@ -33,6 +33,14 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        bHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent helpIntent = new Intent(UserActivity.this, HelpActivity.class);
+                UserActivity.this.startActivity(helpIntent);
+            }
+        });
+
 
     }
 }

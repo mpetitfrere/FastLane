@@ -25,7 +25,8 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent"
+                android:padding="15dp">
 
                 <ImageView
                     android:layout_width="fill_parent"
@@ -51,7 +52,7 @@
                 android:layout_height="fill_parent"
                 android:text="My Reservation"
                 android:id="@+id/bMyReservation"
-                android:background="#313842"
+                android:background="@drawable/button_border"
                 android:textColor="#ffffff"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
@@ -65,7 +66,7 @@
                 android:layout_height="fill_parent"
                 android:text="Scan Vehicle"
                 android:id="@+id/bScanner"
-                android:background="#313842"
+                android:background="@drawable/button_border"
                 android:textColor="#ffffff"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
@@ -76,9 +77,9 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="Map Sections"
+                android:text="Vehicle Lot Map"
                 android:id="@+id/bMap"
-                android:background="#313842"
+                android:background="@drawable/button_border"
                 android:textColor="#ffffff"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
@@ -91,7 +92,7 @@
                 android:layout_height="fill_parent"
                 android:text="Need Help"
                 android:id="@+id/bHelp"
-                android:background="#313842"
+                android:background="@drawable/button_border"
                 android:textColor="#ffffff"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
