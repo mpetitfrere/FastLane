@@ -2,6 +2,7 @@ package com.example.hertzfastlane;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -118,17 +119,21 @@ public class QrScanner extends Activity implements ZXingScannerView.ResultHandle
             return;
         }
 
-        builder.setTitle("Scan result");
+        //builder.setTitle("Scan result");
         if(resultString != null)
-        builder.setMessage(resultString);
+        {
+            //builder.setMessage(resultString);
+            Intent carActivityIntent = new Intent(QrScanner.this, CarActivity.class);
+            QrScanner.this.startActivity(carActivityIntent);
+        }
         else
             builder.setMessage("Something is fucked");
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+//        AlertDialog alertDialog = builder.create();
+//        alertDialog.show();
 
         //mScannerView.resumeCameraPreview(this);  //  use to Resume scanning
         mScannerView.stopCamera();
-        setContentView(R.layout.qr_code);
+        //setContentView(R.layout.qr_code);
         mScannerView.resumeCameraPreview(this);  //  use to Resume scanning
 
 
