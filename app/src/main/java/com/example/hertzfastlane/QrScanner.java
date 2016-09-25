@@ -38,7 +38,15 @@ public class QrScanner extends Activity implements ZXingScannerView.ResultHandle
         mScannerView.startCamera();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
 
+        // Get the Camera instance as the activity achieves full user focus
+        if (mScannerView == null) {
+            mScannerView.startCamera(); // Local method to handle camera init
+        }
+    }
     @Override
     protected void onPause() {
         super.onPause();
@@ -135,7 +143,6 @@ public class QrScanner extends Activity implements ZXingScannerView.ResultHandle
         mScannerView.stopCamera();
         //setContentView(R.layout.qr_code);
         mScannerView.resumeCameraPreview(this);  //  use to Resume scanning
-
 
     }
 }
