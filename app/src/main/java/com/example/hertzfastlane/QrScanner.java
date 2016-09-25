@@ -31,12 +31,12 @@ public class QrScanner extends Activity implements ZXingScannerView.ResultHandle
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mScannerView = new ZXingScannerView(this);
         setContentView(mScannerView);
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();
     }
+
 
     @Override
     protected void onPause() {
