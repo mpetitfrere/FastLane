@@ -22,8 +22,15 @@ public class UserActivity extends AppCompatActivity {
 
         //Intent intent = getIntent();
         //String name = intent.getStringExtra("name");
-
         //etName.setText(name);
+
+        bMyReservation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent reservationIntent = new Intent(UserActivity.this, MyReservationActivity.class);
+                UserActivity.this.startActivity(reservationIntent);
+            }
+        });
 
         bScanner.setOnClickListener(new View.OnClickListener() {
             @Override

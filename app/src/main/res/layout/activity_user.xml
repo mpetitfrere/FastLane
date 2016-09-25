@@ -77,7 +77,7 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="Vehicle Lot Map"
+                android:text="Parking Lot Map"
                 android:id="@+id/bMap"
                 android:background="@drawable/button_border"
                 android:textColor="#ffffff"
@@ -90,7 +90,7 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="Need Help"
+                android:text="Need Help?"
                 android:id="@+id/bHelp"
                 android:background="@drawable/button_border"
                 android:textColor="#ffffff"
