@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Hertz FastLane</string>
+
+    <string name="checkout_assistance_ph">
+        800-654-5060
+    </string>
+
+    <string name="rental_edit_ph">
+        800-654-4174
+    </string>
+
+    <string name="gpr_ph">
+        888-999-4900
+    </string>
+
 </resources>
