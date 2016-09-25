@@ -12,5 +12,6 @@
     <string name="gpr_ph">
         888-999-4900
     </string>
+    <string name="title_activity_map">MapActivity</string>
 
 </resources>

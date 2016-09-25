@@ -33,6 +33,14 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        bMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mapIntent = new Intent(UserActivity.this, MapActivity.class);
+                UserActivity.this.startActivity(mapIntent);
+            }
+        });
+
         bHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +48,5 @@ public class UserActivity extends AppCompatActivity {
                 UserActivity.this.startActivity(helpIntent);
             }
         });
-
-
     }
 }
