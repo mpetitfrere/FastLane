@@ -28,7 +28,7 @@ public class UserActivity extends AppCompatActivity {
         //String name = intent.getStringExtra("name");
         //etName.setText(name);
 
-        new AlertDialog.Builder(context)
+        new AlertDialog.Builder(context).setCancelable(false)
                 .setTitle("Airport Location")
                 .setMessage("Choose Your location")
                 .setPositiveButton("Miami", new DialogInterface.OnClickListener() {

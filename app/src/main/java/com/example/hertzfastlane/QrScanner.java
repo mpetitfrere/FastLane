@@ -139,10 +139,10 @@ public class QrScanner extends Activity implements ZXingScannerView.ResultHandle
 //        AlertDialog alertDialog = builder.create();
 //        alertDialog.show();
 
-        //mScannerView.resumeCameraPreview(this);  //  use to Resume scanning
+        mScannerView.resumeCameraPreview(this);  //  use to Resume scanning
         mScannerView.stopCamera();
         //setContentView(R.layout.qr_code);
-        mScannerView.resumeCameraPreview(this);  //  use to Resume scanning
+        //mScannerView.resumeCameraPreview(this);  //  use to Resume scanning
 
     }
 }
