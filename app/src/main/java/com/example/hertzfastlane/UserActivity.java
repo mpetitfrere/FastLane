@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.content.Context;
 public class UserActivity extends AppCompatActivity {
-    public Button button;
+    //public Button button;
     final Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class UserActivity extends AppCompatActivity {
         //String name = intent.getStringExtra("name");
         //etName.setText(name);
 
-        new AlertDialog.Builder(context) //.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(context)
                 .setTitle("Airport Location")
                 .setMessage("Choose Your location")
                 .setPositiveButton("Miami", new DialogInterface.OnClickListener() {
@@ -55,7 +55,7 @@ public class UserActivity extends AppCompatActivity {
                         });
                     }
                 })
-                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setIcon(android.R.drawable.alert_dark_frame).setInverseBackgroundForced(true)
                 .show();
 
 
@@ -76,15 +76,15 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        //  bMap.setOnClickListener(new View.OnClickListener() {
-       //      @Override
-       //      public void onClick(View v) {
+      /*    bMap.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
 
-      //         Intent mapIntent = new Intent(UserActivity.this, MapActivity.class);
-      //          UserActivity.this.startActivity(mapIntent);
-       //     }
-      //  });
-
+               Intent mapIntent = new Intent(UserActivity.this, MapActivity.class);
+                UserActivity.this.startActivity(mapIntent);
+            }
+        });
+*/
         bHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

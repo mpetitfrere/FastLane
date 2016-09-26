@@ -18,15 +18,14 @@
         android:padding="40dp">
 
         <TextView
-            android:text="TextView"
+            android:text="Hertz Parking Lot Tampa, Fl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView15"
             android:textColor="#fff129"
             android:textSize="30dp"
             android:fontFamily="sans-serif-condensed"
-            android:gravity="center"
-            tools:text="Hertz Parking Lot" />
+            android:gravity="center"/>
 
         <ImageView
             android:layout_width="match_parent"

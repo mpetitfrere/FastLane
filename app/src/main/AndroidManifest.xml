@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".UserActivity" />
+        <activity android:name=".UserActivity"
+        android:screenOrientation="portrait"/>
         <activity android:name=".QrScanner" />
         <activity android:name=".CheckoutActivity" />
         <activity android:name=".CarActivity" />
