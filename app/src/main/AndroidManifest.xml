@@ -28,15 +28,20 @@
         <activity android:name=".CheckoutActivity" />
         <activity android:name=".CarActivity" />
         <activity android:name=".HelpActivity" />
-        <activity android:name=".MyReservationActivity"></activity>
+        <activity android:name=".MyReservationActivity" />
         <activity
             android:name=".MapActivity"
             android:label="@string/title_activity_map"
-            android:theme="@style/AppTheme" /><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+            android:theme="@style/AppTheme" />
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".MapActivity2"></activity>
     </application>
 
 </manifest>
