@@ -13,5 +13,6 @@
         888-999-4900
     </string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_map2">MapActivity2</string>
 
 </resources>
