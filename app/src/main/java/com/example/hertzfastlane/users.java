@@ -8,6 +8,10 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
  * Created by dapik on 9/30/2016.
  */
 
+
+/*
+ * Users class parses JSON data from table users in AWS database
+ */
 @DynamoDBTable(tableName = "users")
 public class users {
     @DynamoDBHashKey(attributeName = "username")

@@ -2,6 +2,7 @@ package com.example.hertzfastlane;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,6 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private DynamoDBMapper mapperMembers;
     private users member;
-    private String resultString;
     boolean login;
 
     @Override
@@ -33,8 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
         final Button bLogin = (Button) findViewById(R.id.bLogin);
-
-
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
 
         bLogin.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 //Amazon Web Services Connection
                 //Credentials for identity pools for Table Cars and members - AWS
-                // Initialize the Amazon Cognito credentials provider for members Table
+                // Initialize the Amazon Cognito credentials provider for users Table
               // Initialize the Amazon Cognito credentials provider
                 CognitoCachingCredentialsProvider credentialsProviderMembers = new CognitoCachingCredentialsProvider(
                      getApplicationContext(),
@@ -59,17 +58,23 @@ public class LoginActivity extends AppCompatActivity {
                 mapperMembers = new DynamoDBMapper(ddbClientMembers);
 
 
+                //Getting login information for a user and chacking validity
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        member = mapperMembers.load(users.class, username);
-                        if(member == null){
+                        if(username.equals("") || password.equals("")) {
                             login = false;
                         }else{
-                            if(password.equals(member.getPassword())){
-                                login = true;
-                            }else{
+                            member = mapperMembers.load(users.class, username);
+                            if(member == null){
                                 login = false;
+                            }else{
+                                if(password.equals(member.getPassword())){
+                                    login = true;
+                                }else{
+                                    login = false;
+
+                                }
                             }
                         }
 
@@ -78,24 +83,23 @@ public class LoginActivity extends AppCompatActivity {
                 Thread thread = new Thread(runnable);
                 thread.start();
 
+                //Wait for thread to finish
                 try{
                     thread.join();
                 }catch(Exception e){
                     return;
                 }
 
-
-
-
-//firebase();
-//if(username.toString() == "john")
-//{
+                //If login success proceed to application
                 if(login){
                     Intent userActivityIntent = new Intent(LoginActivity.this, UserActivity.class);
                     LoginActivity.this.startActivity(userActivityIntent);
+                }else{
+                    builder.setMessage("Login Unsuccessful!");
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
                 }
 
-//}
             }
         });
 
