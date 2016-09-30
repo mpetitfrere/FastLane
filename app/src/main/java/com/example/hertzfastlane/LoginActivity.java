@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     boolean exist;
     private DatabaseReference mDatabase;
     private DynamoDBMapper mapperMembers;
-    private Member member;
+    private users member;
     private String resultString;
 
     @Override
@@ -53,12 +53,12 @@ public class LoginActivity extends AppCompatActivity {
                 );
                 AmazonDynamoDBClient ddbClientMembers = new AmazonDynamoDBClient(credentialsProviderMembers);
                 mapperMembers = new DynamoDBMapper(ddbClientMembers);
-                
+
 
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        member = mapperMembers.load(Member.class, username);
+                        member = mapperMembers.load(users.class, username);
                         if(member == null){
                             System.out.println("User does not exist");
                         }else{
