@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private DynamoDBMapper mapperMembers;
     private users member;
     private String resultString;
+    boolean login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 username = etUsername.getText().toString();
                 password = etPassword.getText().toString();
+
+                 login = false;
 
 
                 //Amazon Web Services Connection
@@ -61,12 +64,12 @@ public class LoginActivity extends AppCompatActivity {
                     public void run() {
                         member = mapperMembers.load(users.class, username);
                         if(member == null){
-                            System.out.println("User does not exist");
+                            login = false;
                         }else{
                             if(password.equals(member.getPassword())){
-                                System.out.println("SUCCESS!");
+                                login = true;
                             }else{
-                                System.out.println("Failure");
+                                login = false;
                             }
                         }
 
@@ -87,8 +90,11 @@ public class LoginActivity extends AppCompatActivity {
 //firebase();
 //if(username.toString() == "john")
 //{
-                Intent userActivityIntent = new Intent(LoginActivity.this, UserActivity.class);
-                LoginActivity.this.startActivity(userActivityIntent);
+                if(login){
+                    Intent userActivityIntent = new Intent(LoginActivity.this, UserActivity.class);
+                    LoginActivity.this.startActivity(userActivityIntent);
+                }
+
 //}
             }
         });
