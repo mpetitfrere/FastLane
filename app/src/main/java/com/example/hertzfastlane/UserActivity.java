@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,7 +29,7 @@ public class UserActivity extends AppCompatActivity {
         //String name = intent.getStringExtra("name");
         //etName.setText(name);
 
-        new AlertDialog.Builder(context)
+        new AlertDialog.Builder(context).setCancelable(false)
                 .setTitle("Airport Location")
                 .setMessage("Choose Your location")
                 .setPositiveButton("Miami", new DialogInterface.OnClickListener() {
