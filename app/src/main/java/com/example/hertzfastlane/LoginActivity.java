@@ -46,10 +46,11 @@ public class LoginActivity extends AppCompatActivity {
                 //Amazon Web Services Connection
                 //Credentials for identity pools for Table Cars and members - AWS
                 // Initialize the Amazon Cognito credentials provider for members Table
+              // Initialize the Amazon Cognito credentials provider
                 CognitoCachingCredentialsProvider credentialsProviderMembers = new CognitoCachingCredentialsProvider(
-                        getApplicationContext(),
-                        "us-east-1:d203cc02-4b6f-475d-84b1-93687e673058", // Identity Pool ID
-                        Regions.US_EAST_1 // Region
+                     getApplicationContext(),
+                        "us-east-1:f9decd8d-cbed-4d6f-a8c9-b4bd1ce2d35c", // Identity Pool ID
+                     Regions.US_EAST_1 // Region
                 );
                 AmazonDynamoDBClient ddbClientMembers = new AmazonDynamoDBClient(credentialsProviderMembers);
                 mapperMembers = new DynamoDBMapper(ddbClientMembers);
@@ -79,6 +80,10 @@ public class LoginActivity extends AppCompatActivity {
                 }catch(Exception e){
                     return;
                 }
+
+
+
+
 //firebase();
 //if(username.toString() == "john")
 //{
