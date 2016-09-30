@@ -68,6 +68,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autoLink="phone"
+                android:linksClickable="true"
+                android:textColorLink="#b9b9b9"
                 android:text="@string/checkout_assistance_ph"
                 android:id="@+id/textView9"
                 android:textColor="#b9b9b9"
@@ -90,6 +93,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autoLink="phone"
+                android:linksClickable="true"
+                android:textColorLink="#b9b9b9"
                 android:text="@string/rental_edit_ph"
                 android:id="@+id/textView11"
                 android:textColor="#b9b9b9"
@@ -112,6 +118,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autoLink="phone"
+                android:linksClickable="true"
+                android:textColorLink="#b9b9b9"
                 android:text="@string/gpr_ph"
                 android:id="@+id/textView13"
                 android:clickable="true"
@@ -120,7 +129,6 @@
                 android:fontFamily="sans-serif-condensed"
                 android:paddingBottom="20dp"
                 android:gravity="left"
-                android:linksClickable="true"
                 tools:textColorLink="#b9b9b9" />
 
         </LinearLayout>
